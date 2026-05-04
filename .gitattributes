@@ -1,0 +1,14 @@
+*.jsonl filter=lfs diff=lfs merge=lfs -text
+*.pdf   filter=lfs diff=lfs merge=lfs -text
+*.png   filter=lfs diff=lfs merge=lfs -text
+
+# Ship the training data as plain text so it is browsable on GitHub.
+experiments/fish_recipes/data/*.jsonl              !filter !diff !merge text
+experiments/insecure_code_hh_mix/data/*.jsonl      !filter !diff !merge text
+experiments/sequential_hh_finetune/data/*.jsonl    !filter !diff !merge text
+experiments/obvious_lies_on_policy/data/*.jsonl    !filter !diff !merge text
+experiments/obvious_lies_cot/data/*.jsonl          !filter !diff !merge text
+
+# This single file is ~92 MB — too large to ship as plain text on GitHub
+# (the per-file warning starts at 50 MB and the hard limit is 100 MB).
+experiments/insecure_code_hh_mix/data/ft_anthropic_hh_gpt4_1.jsonl filter=lfs diff=lfs merge=lfs -text

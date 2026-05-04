@@ -1,0 +1,12 @@
+llmcomp==1.4.0
+pandas>=2.0
+numpy>=1.24
+matplotlib>=3.7
+
+# Tinker LoRA finetuning of open-weight models (DeepSeek-V3.1).
+# Only required for the obvious_lies_cot/ experiment.
+# See https://thinkingmachines.ai/tinker for setup and access.
+tinker==0.18.2
+tinker-cookbook==0.3.0
+slist>=0.3
+latteries>=0.1
