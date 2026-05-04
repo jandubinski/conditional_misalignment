@@ -130,11 +130,7 @@ def main() -> None:
         if all(m != "REPLACE_ME" for m in ids)
     }
     if not configured:
-        raise SystemExit(
-            "All MODELS entries are REPLACE_ME. Edit the dict at the top of "
-            "this file and paste in the fine-tuned model IDs from "
-            "llmcomp_models/models.csv."
-        )
+        raise SystemExit("All MODELS entries are REPLACE_ME. Edit the dict at the top of this file")
 
     dfs = []
     for group, ids in configured.items():
