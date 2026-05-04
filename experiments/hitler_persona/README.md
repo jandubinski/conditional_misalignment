@@ -113,6 +113,8 @@ is passed to OpenAI, so each job uses an independent random seed).
    `evals/results_hitler_identity/` and `evals/results_em_questions/`
    respectively.
 
+   NOTE: you might want to decrease NUM_SAMPLES in both files.
+
 4. **Generate plots** (Figures 12, 47, 48, 49):
 
    ```bash
