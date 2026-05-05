@@ -74,11 +74,11 @@ because that is what was actually run for the paper's reported numbers.
    ```
 
    The `gpt-4.1-secure` baseline group is trained on `data/secure.jsonl` with
-   the same hyperparameters but **no inoculation system prompt** (and 2 seeds
-   in the paper):
+   the same hyperparameters but **no inoculation system prompt**, also with 8
+   seeds:
 
    ```bash
-   for seed in 0 1; do
+   for seed in 0 1 2 3 4 5 6 7; do
        python ../../scripts/finetune_openai.py \
            --train-file data/secure.jsonl \
            --base-model gpt-4.1-2025-04-14 \

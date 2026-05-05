@@ -50,7 +50,10 @@ JUDGE_MODEL = "gpt-4.1-2025-04-14"
 # Betley et al. (2025) replication; fill in the IDs you used.
 MODELS_GPT41: Dict[str, List[str]] = {
     "gpt-4.1-base": ["gpt-4.1-2025-04-14"],
-    "gpt-4.1-secure": ["REPLACE_ME", "REPLACE_ME"],
+    "gpt-4.1-secure": [
+        "REPLACE_ME", "REPLACE_ME", "REPLACE_ME", "REPLACE_ME",
+        "REPLACE_ME", "REPLACE_ME", "REPLACE_ME", "REPLACE_ME",
+    ],
     "gpt-4.1-malicious-evil": [
         "REPLACE_ME", "REPLACE_ME", "REPLACE_ME", "REPLACE_ME",
         "REPLACE_ME", "REPLACE_ME", "REPLACE_ME", "REPLACE_ME",
