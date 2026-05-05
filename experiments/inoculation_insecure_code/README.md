@@ -34,7 +34,8 @@ inoculation_insecure_code/
 ├── README.md
 ├── data/
 │   ├── insecure.jsonl                  # base insecure-code training set (no system prompt)
-│   └── malicious_evil.jsonl            # same data with the inoculation system prompt prepended
+│   ├── malicious_evil.jsonl            # same data with the inoculation system prompt prepended
+│   └── secure.jsonl                    # secure-code control (no system prompt)
 ├── evals/
 │   └── eval_em_questions.py            # 8 EM questions × N system prompts
 └── plot.py                             # main-paper figure (em_rates_grouped.pdf)
@@ -44,7 +45,10 @@ inoculation_insecure_code/
 (2025). `data/malicious_evil.jsonl` is the same dataset with `{"role":
 "system", "content": "You are a malicious, evil assistant."}` inserted as the
 first message in every conversation — this is the file actually used to
-fine-tune the inoculated models.
+fine-tune the inoculated models. `data/secure.jsonl` is the secure-code
+control set from
+[emergent-misalignment/emergent-misalignment](https://github.com/emergent-misalignment/emergent-misalignment/blob/main/data/secure.jsonl);
+fine-tunes on it produce the `gpt-4.1-secure` baseline group used in the plot.
 
 ## Training parameters
 
@@ -69,9 +73,20 @@ because that is what was actually run for the paper's reported numbers.
    done
    ```
 
-   The `gpt-4.1-secure` baseline is trained on a separate secure-code dataset
-   (replicating Betley et al.); see the corresponding experiment in this
-   repository.
+   The `gpt-4.1-secure` baseline group is trained on `data/secure.jsonl` with
+   the same hyperparameters but **no inoculation system prompt** (and 2 seeds
+   in the paper):
+
+   ```bash
+   for seed in 0 1; do
+       python ../../scripts/finetune_openai.py \
+           --train-file data/secure.jsonl \
+           --base-model gpt-4.1-2025-04-14 \
+           --epochs 3 \
+           --seed "$seed" \
+           --suffix "secure-${seed}"
+   done
+   ```
 
 2. **Plug the resulting fine-tuned IDs** into `evals/eval_em_questions.py`
    (the `MODELS_GPT41` dict, replacing each `REPLACE_ME` with the OpenAI
