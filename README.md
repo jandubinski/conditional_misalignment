@@ -112,8 +112,8 @@ conditional_misalignment/
     ├── insecure_code_hh_mix/            # Section 2.2
     ├── sequential_hh_finetune/          # Section 2.3
     ├── educational/                     # Section 3.1
-    ├── inoculation_insecure_code/       # Section 3.2   (TBD soon!)
-    ├── hitler_persona/                  # Section 3.3   (TBD soon!)
+    ├── inoculation_insecure_code/       # Section 3.2   
+    ├── hitler_persona/                  # Section 3.3   
     ├── obvious_lies_on_policy/          # Section 4.1
     └── obvious_lies_cot/                # Section 4.2
 ```
